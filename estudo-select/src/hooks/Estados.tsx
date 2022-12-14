@@ -20,11 +20,11 @@ const useEstados = () => {
     useEffect(() => {
         fetch("https://brasilapi.com.br/api/ibge/uf/v1 " )
             .then((response)=>response.json)
-            .then(response => setEstados(response));
+            .then((nome)=> setEstados(nome));
 
-    },[]);
-    return (
-        estados
-    )
+    }, []);
+    return {
+      estados  
+    }
 };
 export default useEstados; 
