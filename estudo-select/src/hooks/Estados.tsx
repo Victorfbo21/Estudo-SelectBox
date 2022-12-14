@@ -1,9 +1,30 @@
-import { useState } from "react"
 
-const Estados = () =>{
+import { useEffect, useState } from "react"
 
-    const [estados , setEstados]= useState([])
-    fetch(``)
-}
+    export interface Regiao {
+        id: number;
+        sigla: string;
+        nome: string;
+    }
 
-export default Estados
+    export interface IEstados {
+        id: number;
+        sigla: string;
+        nome: string;
+        regiao: Regiao;
+    }
+const useEstados = () => {
+    const [estados , setEstados] = useState<IEstados[]>([]);
+    
+
+    useEffect(() => {
+        fetch("https://brasilapi.com.br/api/ibge/uf/v1 " )
+            .then((response)=>response.json)
+            .then(response => setEstados(response));
+
+    },[]);
+    return (
+        estados
+    )
+};
+export default useEstados; 
